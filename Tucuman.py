@@ -89,7 +89,7 @@ def combinando_diccionarios():
     jugadores={
         "Jugador1": "Lionel Messi",
         "jugador2": "Kylian Mbappe",
-        "jugador3": "Erling Haañamd",
+        "jugador3": "Erling Haalamd",
         "jugador4": "Vinicius Junior"
     }
     equipos={
@@ -100,6 +100,7 @@ def combinando_diccionarios():
     }
     jugadores_y_equipos=jugadores|equipos
     print(jugadores_y_equipos)
+
 
 
 
