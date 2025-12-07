@@ -65,3 +65,66 @@ def ejercicio_siete():
             else:
                 print("Las escuelas tienen malos promedios")
 
+def procesar_texto():
+    especiales = "!#$%&/()=?¡¿][}{´+*+_-:.;,><¨|°¬~`^\@"
+    noEspeciales = False
+    while not noEspeciales:
+        texto_ingresado = input("Ingrese el texto a cifrar o descifrar.")
+        for x in texto_ingresado:
+            if x in especiales:
+                print("No ingrese caracteres especiales.")
+                noEspeciales = False
+                break
+        else:
+            noEspeciales = True
+    return texto_ingresado.lower()
+
+
+def cifrar_descifrar(procesar_texto):
+    abecedario = "abcdefghijklmnopqrstuvwxyz"
+    pregunta = 0
+    while pregunta != 3:
+        print("""
+        ¿Desea cifrar o descifrar? 
+        1. Cifrar.                 
+        2. Descifrar.              
+        3. Salir. 
+        """)
+        pregunta = int(input("Ingrese una opción:"))
+        if pregunta == 1:
+            palabra_cifrada = ""
+            clave = int(input("Ingrese el número de desplazamiento: "))
+            texto = procesar_texto()
+            for letra in texto:
+                if letra == " ":
+                    palabra_cifrada += letra
+                else:
+                    indice = abecedario.find(letra)
+                    if indice != -1:
+                        palabra_cifrada += abecedario[(indice + clave)]
+                    else:
+                        palabra_cifrada += letra
+            print("Texto cifrado:", palabra_cifrada)
+        elif pregunta == 2:
+            palabra_descifrada = ""
+            clave = int(input("Ingrese el número de desplazamiento: "))
+            texto = procesar_texto()
+            for letra in texto:
+                if letra == " ":
+                    palabra_descifrada += letra
+                else:
+                    indice = abecedario.find(letra)
+                    if indice != -1:
+                        palabra_descifrada += abecedario[(indice - clave)]
+                    else:
+                        palabra_descifrada += letra
+            print("Texto descifrado:", palabra_descifrada)
+        elif pregunta == 3:
+            print("No soportaste el estilo Neutrón.")
+            break
+        else:
+            print("Opción no válida.")
+
+
+cifrar_descifrar(procesar_texto) 
+
